@@ -1,0 +1,10 @@
+downloads/*
+!downloads/.gitkeep
+cookies.txt
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+*.part
+*.ytdl
