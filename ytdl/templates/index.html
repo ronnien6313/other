@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ytdl — local YouTube downloader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <main class="shell">
+      <header class="brand">
+        <p class="logo">ytdl</p>
+        <p class="tag">Local YouTube downloads via yt-dlp</p>
+      </header>
+
+      <form id="form" class="panel" autocomplete="off">
+        <label class="field">
+          <span>YouTube URL</span>
+          <input
+            id="url"
+            name="url"
+            type="url"
+            required
+            placeholder="https://www.youtube.com/watch?v=…"
+            spellcheck="false"
+          />
+        </label>
+
+        <label class="field">
+          <span>Quality / format</span>
+          <select id="format" name="format">
+            <option value="best" selected>Best available</option>
+            <option value="1080p">Up to 1080p</option>
+            <option value="720p">Up to 720p</option>
+            <option value="480p">Up to 480p</option>
+            <option value="audio">Audio only (m4a)</option>
+          </select>
+        </label>
+
+        <button type="submit" id="submit">Download</button>
+      </form>
+
+      <section id="status" class="status" hidden aria-live="polite">
+        <div class="status-head">
+          <strong id="status-label">Idle</strong>
+          <span id="status-pct"></span>
+        </div>
+        <div class="bar" aria-hidden="true">
+          <div id="bar-fill" class="bar-fill"></div>
+        </div>
+        <p id="status-msg" class="msg"></p>
+        <p id="status-meta" class="meta"></p>
+        <a id="file-link" class="file-link" hidden href="#">Save file</a>
+      </section>
+
+      <p class="foot">
+        Bound to <code>127.0.0.1</code> only. Files land in
+        <code>ytdl/downloads/</code>. Requires <code>yt-dlp</code> and
+        <code>ffmpeg</code>.
+      </p>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
